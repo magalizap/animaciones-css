@@ -1,0 +1,189 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* INDEX.HTML */
+
+
+.body{
+    height: 100vh;
+    display: flex;
+}
+
+
+.texts{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.name{
+    font-size: 3rem;
+    margin-bottom: .5em;
+}
+
+.name a{
+    text-decoration: none;
+    color: #000;
+}
+
+.paragraph{
+    font-size: 2rem;
+    font-weight: 300;
+    --clippy: circle(0% at 50% 50%);
+}
+
+
+.item{
+    position: relative;
+    padding-left: 1rem;
+    transition: color .1s;
+}
+
+.item::before{
+    content: "";
+    display: block;
+    background-color: steelblue;
+    width: 120%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    clip-path: var(--clippy);
+    transition: clip-path 2s;
+}
+
+.paragraph::before{
+    background-color: #f86d70;
+}
+
+.name:hover::before{
+    clip-path: polygon(0 0, 85% 0, 99% 100%, 0 100%);
+}
+
+.name:hover + .paragraph::before{
+    clip-path: circle(150% at 50% 50%);
+    transition: clip-path 1.5s 2s;
+}
+
+.name:hover,
+.name a:hover,
+.name:hover + .paragraph{
+    color: #fff;
+}
+
+
+
+/* ANIMATION.HTML */
+
+
+/* efecto gradiente */
+header{
+    background-image: linear-gradient(100deg, #ff99ff 0, #ff91ff 3.33%, #ff8bf9 6.67%, #ff86e4 10%, #ff85cf 13.33%, #ff85b9 16.67%, #ff89a4 20%, #ff8f90 23.33%, #ff967d 26.67%, #ff9e6a 30%, #ffa758 33.33%, #ffb047 36.67%, #ffb937 40%, #ffc228 43.33%, #ffca1a 46.67%, #f8d110 50%, #e5d812 53.33%, #d0de1f 56.67%, #bae32f 60%, #a2e840 63.33%, #87ec52 66.67%, #67ef65 70%, #36f279 73.33%, #00f48e 76.67%, #00f6a3 80%, #00f7b9 83.33%, #00f8cf 86.67%, #00f9e5 90%, #00f9fb 93.33%, #00f9ff 96.67%, #00f8ff 100%);
+}
+/*estilos básicos*/
+nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a{
+    padding: 20px;
+    margin: 10px;
+    font-size: medium;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000
+}
+
+nav a:hover{
+    color: #ffff;
+}
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+}
+
+
+p{
+    margin: 20px;
+    font-size: 20px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+
+:root{
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+/*primer animación*/
+
+.rotar{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    background-color: #ff99ff;
+    animation-name: rotacion;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    position: relative;
+    animation-direction: reverse;   /*invierto su dirección*/
+    animation-timing-function: linear; /*persistencia de tiempos*/
+    /*animation-timing-function: ease;*/    /*inicia lento, termina rápido*/
+    animation-iteration-count: infinite; /*cuantas veces queremos que se repita*/
+
+}
+
+@keyframes rotacion {
+    0% {background-color: #ff99ff; left: 0px; top: 0px;}
+    25% {background-color: #ff967d; left: 100px; top: 0px;}
+    50% {background: #f8d110; left: 100px; top: 100px;}
+    75% {background-color: #00f48e; left: 0px; top: 100px;}
+    100% {background-color: #00f8ff; left: 0px; top: 0px;}
+}
+
+/*Segunda animación*/
+
+.ampliar{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    background-color: #ff86e4;
+    transition: height 2s, width 2s, background-color 2s;
+}
+
+.ampliar:hover{
+    height: 300px;
+    width: 400px;
+    background-color: #00f8ff;
+}
+
+/*Tercera animación*/
+
+.circle{
+    background-color: #ffa758;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    clip-path: circle(50% at top left);
+    transition-property: clip-path;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    /* ease | ease-in | ease-in-out | ease-out | linear*/
+    /*transition-delay: 1s;*/
+}
+
+.circle:hover{
+    clip-path: circle(150% at top left);
+}
